@@ -1,10 +1,12 @@
-﻿interface ITodo {
-    text: string;
-    done: boolean;
+﻿module Dto {
+    export interface ITodo {
+        text: string;
+        done: boolean;
+    }
 }
 
 interface ITodoScope extends ng.IScope {
-    todos: ITodo[];
+    todos: Dto.ITodo[];
     todoText: string;
     addTodo(): void;
     remaining(): number;
