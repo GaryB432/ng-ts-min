@@ -7,13 +7,15 @@
 }
 
 class TodoCtrl {
-    constructor($scope: ITodoScope, todoService: TodoService) {
+    constructor($scope: ITodoScope, todoService: TodoService, positionService: PositionService) {
         todoService.getTodos().then((todos) => $scope.todos = todos);
 
         $scope.addTodo = function () {
             todoService.addTodo({ text: $scope.todoText, done: false });
             $scope.todoText = '';
         };
+
+        positionService.getPositions().then((r) => console.log(r));
 
         $scope.remaining = () => todoService.remaining();
 
@@ -23,5 +25,5 @@ class TodoCtrl {
     }
 }
 
-angular.module('app.controllers', []).controller('TodoCtrl', ['$scope', 'TodoService', TodoCtrl]);
+angular.module('app.controllers', []).controller('TodoCtrl', ['$scope', 'TodoService', 'PositionService', TodoCtrl]);
  

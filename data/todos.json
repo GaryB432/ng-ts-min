@@ -3,6 +3,7 @@
         { "text":"learn angular", "done": true },
         { "text": "build an angular app", "done": false },
         { "text": "create a service", "done": true },
-        { "text": "stub out a data service", "done": false }
+        { "text": "stub out a data service", "done": true },
+        { "text": "use the $q service for async promises", "done": true }
     ]
 }

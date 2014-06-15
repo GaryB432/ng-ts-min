@@ -26,11 +26,11 @@
         }
         getTodos(): ng.IHttpPromise<ITodoDataResponse> { return this.getData('todos.json', { 'limit': 12, 'sortBy': 'created:desc' }); }
     }
-    export class Positions extends JsonDataService {
+    export class Position extends JsonDataService {
         constructor($http: ng.IHttpService) {
             super($http);
         }
-        getPositions(): ng.IHttpPromise<ITodoDataResponse> { return this.getData('positions.json'); }
+        getPositions(): ng.IHttpPromise<IPositionDataResponse> { return this.getData('positions.json', { 'account': 'wtf' }); }
     }
 }
 
@@ -65,8 +65,25 @@ class TodoService {
         });
         return this.todos;
     }
-} 
+}
+
+class PositionService {
+    private positions: Dto.IPosition[] = [];
+
+    constructor(private $q: ng.IQService, private dataService: DataServices.Position) { }
+
+    getPositions(): ng.IPromise<Dto.IPosition[]> {
+        var getPositions = this.$q.defer<Dto.IPosition[]>();
+        this.dataService.getPositions().then((response) => {
+            var totals = response.data.includesTotal ? response.data.positions.pop() : null;
+            return getPositions.resolve(this.positions = response.data.positions);
+        });
+        return getPositions.promise;
+    }
+}
 
 angular.module('app.services', [])
     .service('DataServices.Todo', ['$http', DataServices.Todo])
-    .service('TodoService', ['$q', 'DataServices.Todo', TodoService]);
+    .service('DataServices.Position', ['$http', DataServices.Position])
+    .service('TodoService', ['$q', 'DataServices.Todo', TodoService])
+    .service('PositionService', ['$q', 'DataServices.Position', PositionService]);
