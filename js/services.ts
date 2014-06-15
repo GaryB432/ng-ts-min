@@ -1,11 +1,13 @@
 ﻿module DataServices {
-    export interface ITodoDataResponse {
+    export interface IDataResponse {
+    }
+    export interface ITodoDataResponse extends IDataResponse {
         todos: ITodo[];
     }
 
     export class JsonDataService {
         constructor(public $http: ng.IHttpService) { }
-        getData(url: string): ng.IHttpPromise<any> {
+        getData(url: string): ng.IHttpPromise<IDataResponse> {
             return this.$http({
                 method: 'GET',
                 url: '/data/' + url,
