@@ -67,6 +67,7 @@
     <Content Include="404.html" />
     <Content Include="crossdomain.xml" />
     <Content Include="css\app.css" />
+    <None Include="data\positions.json" />
     <Content Include="humans.txt" />
     <Content Include="index.html" />
     <Content Include="robots.txt" />

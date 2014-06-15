@@ -4,6 +4,10 @@
     export interface ITodoDataResponse extends IDataResponse {
         todos: ITodo[];
     }
+    export interface IPositionDataResponse extends IDataResponse {
+        positions: Dto.IPosition[];
+        includesTotal: boolean;
+    }
 
     export class JsonDataService {
         constructor(public $http: ng.IHttpService) { }
@@ -21,6 +25,12 @@
             super($http);
         }
         getTodos(): ng.IHttpPromise<ITodoDataResponse> { return this.getData('todos.json'); }
+    }
+    export class Positions extends JsonDataService {
+        constructor($http: ng.IHttpService) {
+            super($http);
+        }
+        getPositions(): ng.IHttpPromise<ITodoDataResponse> { return this.getData('positions.json'); }
     }
 }
 
