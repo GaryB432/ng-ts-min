@@ -5,17 +5,17 @@
     remaining(): number;
     archive(): void;
 }
-
+interface IPositionsScope extends ng.IScope {
+    positions: DtoExt.IPosition[];
+}
 class TodoCtrl {
-    constructor($scope: ITodoScope, todoService: TodoService, positionService: PositionService) {
+    constructor($scope: ITodoScope, todoService: TodoService) {
         todoService.getTodos().then((todos) => $scope.todos = todos);
 
         $scope.addTodo = function () {
             todoService.addTodo({ text: $scope.todoText, done: false });
             $scope.todoText = '';
         };
-
-        positionService.getPositions().then((r) => console.log(r));
 
         $scope.remaining = () => todoService.remaining();
 
@@ -24,6 +24,13 @@ class TodoCtrl {
         };
     }
 }
+class PositionsCtrl {
+    constructor($scope: IPositionsScope, positionService: PositionService) {
+        positionService.getPositions().then((r) => $scope.positions = r);
+    }
+}
 
-angular.module('app.controllers', []).controller('TodoCtrl', ['$scope', 'TodoService', 'PositionService', TodoCtrl]);
+angular.module('app.controllers', [])
+    .controller('TodoCtrl', ['$scope', 'TodoService', TodoCtrl])
+    .controller('PositionsCtrl', ['$scope', 'PositionService', PositionsCtrl]);
  

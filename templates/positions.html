@@ -1,0 +1,30 @@
+﻿<h2>Positions</h2>
+<div>
+    <div>{{positions.length}} Positions</div>
+    <table class="positions">
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>Symbol</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Last</th>
+                <th>Change</th>
+                <th>Market Value</th>
+                <th>Account Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-class="{ selected: position.IsSelected }" ng-repeat="position in positions">
+                <td><input ng-show="position.IsSelectable" type="checkbox" ng-model="position.IsSelected"></td>
+                <td>{{position.DisplayableSymbol}}</td>
+                <td>{{position.Desc}}</td>
+                <td class="num">{{position.Qty}}</td>
+                <td class="num">{{position.LastPrice | currency}}</td>
+                <td ng-class="{ up: {{position.DollarChg > 0}}, down: {{position.DollarChg < 0}}, num: true }">{{position.DollarChg | currency}}</td>
+                <td class="num">{{position.MktVal | currency}}</td>
+                <td>{{position.AccountType}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

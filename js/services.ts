@@ -34,6 +34,12 @@
     }
 }
 
+module DtoExt {
+    export interface IPosition extends Dto.IPosition {
+        IsSelected: boolean;
+    }
+}
+
 class TodoService {
     private todos: Dto.ITodo[] = [];
 
@@ -68,15 +74,21 @@ class TodoService {
 }
 
 class PositionService {
-    private positions: Dto.IPosition[] = [];
+    private positions: DtoExt.IPosition[] = [];
 
     constructor(private $q: ng.IQService, private dataService: DataServices.Position) { }
 
-    getPositions(): ng.IPromise<Dto.IPosition[]> {
+    private static addIsSelected(position: Dto.IPosition): DtoExt.IPosition {
+        var selectablePosition = <DtoExt.IPosition>position;
+        selectablePosition.IsSelected = position.IsSelectable && position.Symbol == 'F';
+        return selectablePosition;
+    }
+
+    getPositions(): ng.IPromise<DtoExt.IPosition[]> {
         var getPositions = this.$q.defer<Dto.IPosition[]>();
         this.dataService.getPositions().then((response) => {
             var totals = response.data.includesTotal ? response.data.positions.pop() : null;
-            return getPositions.resolve(this.positions = response.data.positions);
+            return getPositions.resolve(this.positions = response.data.positions.map((d) => PositionService.addIsSelected(d)));
         });
         return getPositions.promise;
     }

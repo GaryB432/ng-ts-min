@@ -73,6 +73,7 @@
     <Content Include="robots.txt" />
     <Content Include="templates\about.html" />
     <Content Include="templates\main.html" />
+    <Content Include="templates\positions.html" />
     <Content Include="Web.config" />
     <Content Include="bower.json" />
     <Content Include="tsd.json" />
@@ -113,7 +114,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>4401</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

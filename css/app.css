@@ -4,3 +4,21 @@
 span.done-true {
     text-decoration:line-through
 }
+
+table.positions tr td {
+    padding: 0 5px;
+}
+
+table.positions tr td.up {
+    background-color: green;
+}
+table.positions tr td.down {
+    background-color: red;
+}
+table.positions tr td.num {
+    text-align: right;
+}
+
+table.positions tr.selected {
+    background-color: silver;
+}

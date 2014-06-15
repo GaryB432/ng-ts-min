@@ -84,6 +84,7 @@ angular.module('app', ['ngRoute', 'app.services', 'app.controllers'])
     .config(['$routeProvider', ($routeProvider: ng.route.IRouteProvider) => {
         $routeProvider
             .when('/', { templateUrl: 'templates/main.html', controller: 'TodoCtrl' })
+            .when('/positions', { templateUrl: 'templates/positions.html', controller: 'PositionsCtrl' })
             .when('/about', { templateUrl: 'templates/about.html' })
             .otherwise({ redirectTo: '/' });
     }]);
