@@ -16,41 +16,37 @@ To get you started you can simply clone this repository and install the dependen
 
 ### Install Dependencies
 
-We have two kinds of dependencies in this project: tools and angular framework code.  The tools help
-us manage and test the application.
+You'll need `NodeJs` and the Node Package Manager to install the other project dependencies.
 
-* We get the angular code via `bower`, a [client-side code package manager][bower].
+Install [NodeJs](http://nodejs.org/).
 
-We have included a bower.json file so you can simply:
+Now that you have `npm` you can install the dependencies. Our project dependencies are managed with `bower` a client-side package manager.  Use the following command to install `bower` and `tsd` a TypeScript Definition manager for [DefinitelyTyped](http://definitelytyped.org/).
+
+```
+npm install bower tsd typescript -g
+```
+
+Now that you have the dependency management tools you can install the project dependencies themselves. The following command will install `JQuery`, `AngularJS` and `HTML5Boilerplate` into your project.
 
 ```
 bower install
 ```
-
-For TypeScript definition files for AngularJS and JQuery use:
-
+And, finally, install the TypeScript definition files needed by the project.
 ```
-tsd update
+tsd install
 ```
+You should find that you have two new folders in your project.
 
-Behind the scenes this will also call `bower install`.  You should find that you have two new
-folders in your project.
-
-* `bower_components` - contains the angular framework files
+* `bower_components` - contains the framework files
 * `typings` - contains the TypeScript definition files
 
-## Updating Angular
+## Updating Dependencies
 
-Previously we recommended that you merge in changes to angular-seed into your own fork of the project.
-Now that the angular framework library code and tools are acquired through package managers (npm and
-bower) you can use these tools instead to update the dependencies.
-
-You can update the Angular dependencies by running:
+You can update all the project dependencies by running:
 
 ```
 bower update
+tsd update
 ```
 
 This will find the latest versions that match the version ranges specified in the `bower.json` file.
-
-
