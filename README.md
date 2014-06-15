@@ -27,10 +27,17 @@ We have included a bower.json file so you can simply:
 bower install
 ```
 
-Behind the scenes this will also call `bower install`.  You should find that you have a new
-folder in your project.
+For TypeScript definition files for AngularJS and JQuery use:
+
+```
+tsd update
+```
+
+Behind the scenes this will also call `bower install`.  You should find that you have two new
+folders in your project.
 
 * `bower_components` - contains the angular framework files
+* `typings` - contains the TypeScript definition files
 
 ## Updating Angular
 
