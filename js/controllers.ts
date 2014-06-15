@@ -1,7 +1,6 @@
 ﻿
 class TodoCtrl {
     constructor($scope: ITodoScope, todoService: TodoService) {
-        'use strict';
         todoService.getTodos().then((todos) => $scope.todos = todos);
 
         $scope.addTodo = function () {
