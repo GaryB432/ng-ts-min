@@ -1,0 +1,8 @@
+bin/
+obj/
+bower_components/
+*.suo
+*.user
+*.sln.docstates
+*.js.map
+*.js
