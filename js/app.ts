@@ -3,17 +3,6 @@
         text: string;
         done: boolean;
     }
-}
-
-interface ITodoScope extends ng.IScope {
-    todos: Dto.ITodo[];
-    todoText: string;
-    addTodo(): void;
-    remaining(): number;
-    archive(): void;
-}
-
-module Dto {
     export interface IAccount {
         AccountName: string;
         AccountNumber: string;

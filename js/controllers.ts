@@ -1,4 +1,11 @@
-﻿
+﻿interface ITodoScope extends ng.IScope {
+    todos: Dto.ITodo[];
+    todoText: string;
+    addTodo(): void;
+    remaining(): number;
+    archive(): void;
+}
+
 class TodoCtrl {
     constructor($scope: ITodoScope, todoService: TodoService) {
         'use strict';
