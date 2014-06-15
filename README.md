@@ -9,6 +9,7 @@ framework.
 
 The seed app features a controller and a service and uses Angular routing.
 
+Note that we have turned on the --noImplicitAny flag for TypeScript compilation. Expressions and declarations will need a type specified.  You can explicitly use `any` but inferencing of any will be an error.
 
 ## Getting Started
 
