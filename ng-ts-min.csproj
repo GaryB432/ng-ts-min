@@ -66,9 +66,7 @@
     <Content Include=".gitignore" />
     <Content Include="404.html" />
     <Content Include="crossdomain.xml" />
-    <Content Include="css\main.css" />
-    <Content Include="css\normalize.css" />
-    <Content Include="css\normalize.min.css" />
+    <Content Include="css\app.css" />
     <Content Include="humans.txt" />
     <Content Include="index.html" />
     <Content Include="robots.txt" />
@@ -78,6 +76,7 @@
     <Content Include="bower.json" />
     <Content Include="tsd.json" />
     <Content Include="README.md" />
+    <Content Include="data\todos.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -94,7 +93,6 @@
     <TypeScriptCompile Include="typings\angularjs\angular-route.d.ts" />
     <TypeScriptCompile Include="typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
-    <TypeScriptCompile Include="typings\tsd.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
