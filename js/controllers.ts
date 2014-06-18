@@ -6,7 +6,7 @@
     archive(): void;
 }
 interface IPositionsScope extends ng.IScope {
-    positions: DtoExt.IPosition[];
+    positions: Data.IPosition[];
 }
 class TodoCtrl {
     constructor($scope: ITodoScope, todoService: TodoService) {

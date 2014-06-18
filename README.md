@@ -27,7 +27,7 @@ Now that you have `npm` you can install the dependencies. Our project dependenci
 npm install bower tsd typescript -g
 ```
 
-Now that you have the dependency management tools you can install the project dependencies themselves. The following command will install `JQuery`, `AngularJS` and `HTML5Boilerplate` into your project.
+Now that you have the dependency management tools you can install the project dependencies themselves. The following command will install `JQuery`, `AngularJS`, `HTML5Boilerplate` and `angular-md5` into your project.
 
 ```
 bower install

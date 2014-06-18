@@ -34,9 +34,10 @@
     }
 }
 
-module DtoExt {
+module Data {
     export interface IPosition extends Dto.IPosition {
         IsSelected: boolean;
+        md5: string;
     }
 }
 
@@ -73,29 +74,32 @@ class TodoService {
     }
 }
 
+interface Imd5 { createHash(input: string): string; }
+
 class PositionService {
-    private positions: DtoExt.IPosition[] = [];
+    private positions: Data.IPosition[] = [];
 
-    constructor(private $q: ng.IQService, private dataService: DataServices.Position) { }
+    constructor(private $q: ng.IQService, private md5: Imd5, private dataService: DataServices.Position) { }
 
-    private static addIsSelected(position: Dto.IPosition): DtoExt.IPosition {
-        var selectablePosition = <DtoExt.IPosition>position;
-        selectablePosition.IsSelected = position.IsSelectable && position.Symbol == 'F';
-        return selectablePosition;
+    private TranslateDtoToData(position: Dto.IPosition): Data.IPosition {
+        var dataPosition = <Data.IPosition>position;
+        dataPosition.IsSelected = position.IsSelectable && position.Symbol == 'F';
+        dataPosition.md5 = this.md5.createHash(position.Symbol);
+        return dataPosition;
     }
 
-    getPositions(): ng.IPromise<DtoExt.IPosition[]> {
+    getPositions(): ng.IPromise<Data.IPosition[]> {
         var getPositions = this.$q.defer<Dto.IPosition[]>();
         this.dataService.getPositions().then((response) => {
             var totals = response.data.includesTotal ? response.data.positions.pop() : null;
-            return getPositions.resolve(this.positions = response.data.positions.map((d) => PositionService.addIsSelected(d)));
+            return getPositions.resolve(this.positions = response.data.positions.map((p) => this.TranslateDtoToData(p)));
         });
         return getPositions.promise;
     }
 }
 
-angular.module('app.services', [])
+angular.module('app.services', ['angular-md5'])
     .service('DataServices.Todo', ['$http', DataServices.Todo])
     .service('DataServices.Position', ['$http', DataServices.Position])
     .service('TodoService', ['$q', 'DataServices.Todo', TodoService])
-    .service('PositionService', ['$q', 'DataServices.Position', PositionService]);
+    .service('PositionService', ['$q', 'md5', 'DataServices.Position', PositionService]);

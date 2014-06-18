@@ -10,6 +10,7 @@
     "jquery": "~2.1.1",
     "angular": "~1.2.18",
     "angular-route": "~1.2.18",
-    "html5-boilerplate": "~4.3.0"
+    "html5-boilerplate": "~4.3.0",
+    "angular-md5": "~0.1.7"
   }
 }
